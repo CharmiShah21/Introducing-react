@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Greeting from "./components/Greeting";
 import './App.css';
 
 function App() {
+  const [name, setName] = useState('');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Greeting name={name} />
+      {name && <marquee className="marquee" behavior="scroll" direction="left" scrollamount="25">👋 Hello {name}</marquee>}
+      <input
+        className="input"
+        onChange={({ target: { value } }) => setName(value)}
+        placeholder="Enter your name"
+      />
     </div>
   );
 }
